@@ -5,7 +5,7 @@ import { Client } from 'pulsar-client';
 @Injectable()
 export class PulsarClient implements OnModuleDestroy {
   private readonly client = new Client({
-    serviceUrl: this.configService.getOrThrow<string>('PULSAR_SERVICE)URL'),
+    serviceUrl: this.configService.getOrThrow<string>('PULSAR_SERVICE_URL'),
   });
   constructor(private readonly configService: ConfigService) {}
 

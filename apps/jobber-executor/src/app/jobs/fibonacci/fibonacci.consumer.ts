@@ -1,5 +1,5 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { FibonacciData } from './fibonacci-data.interface';
+import { FibonacciData } from './fibonacci-data.message';
 import { iterate } from 'fibonacci';
 import { PulsarClient, PulsarConsumer } from '@jobber/pulsar';
 @Injectable()

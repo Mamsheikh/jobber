@@ -5,7 +5,7 @@
 
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
-import { AUTH_PACKAGE_NAME } from 'types/proto/auth';
+import { AUTH_PACKAGE_NAME } from '@jobber/grpc';
 import { GrpcOptions, Transport } from '@nestjs/microservices';
 import { join } from 'path';
 import { init } from '@jobber/nestjs';

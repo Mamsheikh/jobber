@@ -8,7 +8,7 @@ export class FibonacciConsumer
   implements OnModuleInit
 {
   constructor(pulsarClient: PulsarClient) {
-    super(pulsarClient, 'Fibnonacci');
+    super(pulsarClient, 'Fibonacci');
   }
 
   protected async onMessage(data: FibonacciData): Promise<void> {

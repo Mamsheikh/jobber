@@ -4,7 +4,7 @@ import { AbstractJob } from '../abstract.job';
 import { FibonacciData } from './fibonacci-data.message';
 
 @Job({
-  name: 'Fibnonacci',
+  name: 'Fibonacci',
   description: 'Generate a Fibonncai sequence and store in in the DB.',
 })
 export class FibonacciJob extends AbstractJob<FibonacciData> {

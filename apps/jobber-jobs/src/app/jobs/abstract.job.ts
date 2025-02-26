@@ -21,7 +21,6 @@ export abstract class AbstractJob<T extends object> {
       }
       return;
     }
-
     await this.send(data);
   }
 

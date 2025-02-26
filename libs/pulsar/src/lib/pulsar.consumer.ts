@@ -6,6 +6,7 @@ import { Logger } from '@nestjs/common';
 export abstract class PulsarConsumer<T> {
   private consumer!: Consumer;
   protected readonly logger = new Logger(this.topic);
+
   constructor(
     private readonly pulsarClient: PulsarClient,
     private readonly topic: string
@@ -19,16 +20,17 @@ export abstract class PulsarConsumer<T> {
   }
 
   private async listener(message: Message) {
+    this.logger.log(`Message received: ${message.getMessageId()}`);
     try {
       const data = deserialize<T>(message.getData());
-      this.logger.debug(`Received message ${JSON.stringify(data)}`);
+      this.logger.debug(`Received message: ${JSON.stringify(data)}`);
       await this.onMessage(data);
-    } catch (error) {
-      this.logger.error(error);
+    } catch (err) {
+      this.logger.error(err);
     } finally {
       await this.consumer.acknowledge(message);
     }
   }
 
-  protected abstract onMessage(message: T): Promise<void>;
+  protected abstract onMessage(data: T): Promise<void>;
 }

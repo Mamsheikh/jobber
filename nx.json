@@ -14,7 +14,6 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "67b63823a5f9dd0bda6b57c7",
   "plugins": [
     {
       "plugin": "@nx/webpack/plugin",
@@ -36,12 +35,7 @@
       "plugin": "@nx/jest/plugin",
       "options": {
         "targetName": "test"
-      },
-      "exclude": [
-        "apps/jobber-auth-e2e/**/*",
-        "apps/jobber-jobs-e2e/**/*",
-        "apps/jobber-executor-e2e/**/*"
-      ]
+      }
     }
   ],
   "targetDefaults": {

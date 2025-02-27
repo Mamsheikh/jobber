@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { LoggerModule } from '@jobber/nestjs';
+import { GqlLogginPlugin } from '@jobber/graphql';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { LoggerModule } from '@jobber/nestjs';
     ConfigModule.forRoot({ isGlobal: true }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
+      plugins: [new GqlLogginPlugin()],
       introspection: true,
       playground: {
         settings: {

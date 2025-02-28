@@ -55,21 +55,22 @@ jobs:
       - name: Build and push all images to ECR
         run: |
           IMAGES=(
-          "jobs apps/jobs/Dockerfile",
-          "executor apps/executor/Dockerfile",
-          "auth apps/auth/Dockerfile"
+            "jobs apps/jobs/Dockerfile"
+            "executor apps/executor/Dockerfile"
+            "auth apps/auth/Dockerfile"
+            "products apps/products/Dockerfile"
           )
 
           for image in "${IMAGES[@]}"; do
-            NAME=$(echo $image | cut -d' ' -f10)
-            DOCKERFILE=$(echo $image | cut -d' ' -f2')
+            NAME=$(echo $image | cut -d' ' -f1)
+            DOCKERFILE=$(echo $image | cut -d' ' -f2)
 
             {
               docker build \
-              --tag 490004651582.dkr.ecr.us-east-1.amazonaws.com/jobber/$NAME:latest \
-              -f $DOCKERFILE \
-              . &&  docker push 490004651582.dkr.ecr.us-east-1.amazonaws.com/jobber/$NAME:latest
-            } & 
-             done
+                --tag 905418201315.dkr.ecr.us-east-1.amazonaws.com/jobber/$NAME:latest \
+                -f $DOCKERFILE \
+                . && docker push 905418201315.dkr.ecr.us-east-1.amazonaws.com/jobber/$NAME:latest
+            } &
+          done
 
-             wait
+          wait

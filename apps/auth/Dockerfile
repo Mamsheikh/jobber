@@ -2,7 +2,7 @@ FROM node:18-slim AS builder
 
 WORKDIR /workspace
 
-RUN apt-get update && apt-get install -y openssl
+RUN apt-get update -y && apt-get install -y openssl
 
 COPY package*.json ./
 COPY nx.json ./
@@ -26,7 +26,7 @@ RUN npx nx build auth
 
 FROM node:18-slim AS runner
 
-RUN apt-get update && apt-get install -y openssl
+RUN apt-get update -y && apt-get install -y openssl
 
 WORKDIR /app
 

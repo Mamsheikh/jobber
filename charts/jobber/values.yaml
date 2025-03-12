@@ -4,13 +4,12 @@ global:
 pulsar:
   namespace: pulsar
   namespaceCreate: true
-  components:
-    proxy: false
   zookeeper:
     replicaCount: 1
     podMonitor:
       enabled: false
   broker:
+    initialize: true
     replicaCount: 1
     podMonitor:
       enabled: false
@@ -22,6 +21,7 @@ pulsar:
     podMonitor:
       enabled: false
   proxy:
+    replicaCount: 1
     podMonitor:
       enabled: false
   kube-prometheus-stack:
@@ -62,5 +62,5 @@ auth:
     http: 3000
     grpc: 5000
   jwt:
-    secret: super-secret
+    secret: s490004651582
     expirationMs: 2880000
